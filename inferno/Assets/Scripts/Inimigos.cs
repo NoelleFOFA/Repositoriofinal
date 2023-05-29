@@ -6,6 +6,7 @@ public class Inimigos : MonoBehaviour
 {
     public GameObject oTiroDoInimigo;
     public Transform oLocalDOTiro;
+    public Transform oLocalDOTiro2;
     public GameObject itensD;
     public float velocidadeI;
     public int vidamaxI;
@@ -15,6 +16,7 @@ public class Inimigos : MonoBehaviour
     public float tempomax;
     public float tempoatual;
     public bool inimigoqueatira;
+    public bool inimigoqatira2;
 
     void Start()
     {
@@ -38,8 +40,17 @@ public class Inimigos : MonoBehaviour
         tempoatual -= Time.deltaTime;
         if(tempoatual <= 0)
         {
-            Instantiate(oTiroDoInimigo, oLocalDOTiro.position, Quaternion.Euler(0f, 0f, 0f));
-            tempoatual = tempomax;
+            if(inimigoqatira2 == true)
+            {
+                Instantiate(oTiroDoInimigo, oLocalDOTiro.position, Quaternion.Euler(0f, 0f, 15f));
+                tempoatual = tempomax;
+                Instantiate(oTiroDoInimigo, oLocalDOTiro2.position, Quaternion.Euler(0f, 0f, -15f));
+            }
+            else
+            {
+                Instantiate(oTiroDoInimigo, oLocalDOTiro.position, Quaternion.Euler(0f, 0f, 0f));
+                tempoatual = tempomax;
+            }
         }
     }
     public void DanoInimigo(int DanoParaTomar)

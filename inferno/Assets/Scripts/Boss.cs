@@ -36,6 +36,7 @@ public class Boss : MonoBehaviour
         barravidaB.localScale = barrascale;
     }
 
+
     void Update()
     {
         TirosBoss();
